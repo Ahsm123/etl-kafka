@@ -1,0 +1,6 @@
+@etl_kafka_extract_HostAddress = http://localhost:5129
+
+GET {{etl_kafka_extract_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "etl-kafka-transform", "etl-kafka-transform\etl-kafka-transform.csproj", "{49166560-2C0C-44C1-B918-53FC9AF6BDA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "etl-kafka-load", "etl-kafka-load\etl-kafka-load.csproj", "{215F8571-F6DC-4878-86E8-44DB1A3E93C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "etl-kafka-extract", "etl-kafka-extract\etl-kafka-extract.csproj", "{5A927BC8-FE3E-496F-A8A0-106F031589C6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1AD136A6-CB2A-46C6-927D-39078435C93F}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49166560-2C0C-44C1-B918-53FC9AF6BDA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49166560-2C0C-44C1-B918-53FC9AF6BDA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49166560-2C0C-44C1-B918-53FC9AF6BDA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49166560-2C0C-44C1-B918-53FC9AF6BDA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{215F8571-F6DC-4878-86E8-44DB1A3E93C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{215F8571-F6DC-4878-86E8-44DB1A3E93C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{215F8571-F6DC-4878-86E8-44DB1A3E93C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{215F8571-F6DC-4878-86E8-44DB1A3E93C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A927BC8-FE3E-496F-A8A0-106F031589C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A927BC8-FE3E-496F-A8A0-106F031589C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A927BC8-FE3E-496F-A8A0-106F031589C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A927BC8-FE3E-496F-A8A0-106F031589C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
