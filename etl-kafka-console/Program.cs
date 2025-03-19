@@ -3,7 +3,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Confluent.Kafka;
 
-class Program
+public class Program
 {
     private const string KafkaBroker = "localhost:9092";
     private const string RawDataTopic = "raw_data";

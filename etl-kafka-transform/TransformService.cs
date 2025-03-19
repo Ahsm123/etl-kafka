@@ -59,7 +59,7 @@ public class TransformService
         }
     }
 
-    static string ApplyTransformation(string input, int pipelineId)
+    public static string ApplyTransformation(string input, int pipelineId)
     {
 
         return pipelineId switch
