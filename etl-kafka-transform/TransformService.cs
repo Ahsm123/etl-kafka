@@ -33,7 +33,6 @@ public class TransformService
             var result = consumer.Consume();
             var inputMessage = result.Message.Value;
 
-            Console.WriteLine($"DEBUG: Received JSON -> {inputMessage}");
 
             try
             {
@@ -44,7 +43,7 @@ public class TransformService
 
                 if (eventData == null || string.IsNullOrEmpty(eventData.Data))
                 {
-                    Console.WriteLine("Invalid message format: Deserialized object is null or missing fields.");
+                    Console.WriteLine("Invalid message format.");
                     continue;
                 }
 
@@ -62,7 +61,6 @@ public class TransformService
 
     static string ApplyTransformation(string input, int pipelineId)
     {
-        Console.WriteLine($"DEBUG: Applying transformation for PipelineId {pipelineId} to input '{input}'");
 
         return pipelineId switch
         {

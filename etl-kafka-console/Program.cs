@@ -8,16 +8,15 @@ class Program
     private const string KafkaBroker = "localhost:9092";
     private const string RawDataTopic = "raw_data";
 
-    static async Task Main()
+    public static async Task Main()
     {
-        Console.WriteLine("Kafka CLI Producer Started");
 
         var producerConfig = new ProducerConfig { BootstrapServers = KafkaBroker };
         using var producer = new ProducerBuilder<Null, string>(producerConfig).Build();
 
         while (true)
         {
-            Console.Write("Enter a message (or type 'exit' to quit): ");
+            Console.Write("Enter a message or type 'exit': ");
             string? message = Console.ReadLine();
 
             if (string.IsNullOrWhiteSpace(message))
@@ -53,7 +52,6 @@ class Program
 
             string jsonMessage = JsonSerializer.Serialize(eventData);
 
-            Console.WriteLine($"DEBUG: Sending JSON -> {jsonMessage}");
 
             await producer.ProduceAsync(RawDataTopic, new Message<Null, string> { Value = jsonMessage });
 
