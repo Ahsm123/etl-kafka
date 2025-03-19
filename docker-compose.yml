@@ -1,11 +1,15 @@
 services:
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
+    restart: unless-stopped
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
+    volumes:
+      - zookeeper_data:/var/lib/zookeeper
 
   kafka:
     image: confluentinc/cp-kafka:latest
+    restart: unless-stopped
     depends_on:
       - zookeeper
     ports:
@@ -16,4 +20,10 @@ services:
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"  
+    volumes:
+      - kafka_data:/var/lib/kafka
+
+volumes:
+  kafka_data:
+  zookeeper_data:
