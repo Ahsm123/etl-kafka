@@ -1,0 +1,7 @@
+{
+  "Pipelines": {
+    "1": { "transformation": "uppercase" },
+    "2": { "transformation": "lowercase" },
+    "3": { "transformation": "reverse" }
+  }
+}

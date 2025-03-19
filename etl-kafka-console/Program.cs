@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Confluent.Kafka;
 
@@ -6,11 +7,10 @@ class Program
 {
     private const string KafkaBroker = "localhost:9092";
     private const string RawDataTopic = "raw_data";
-    private const string RawConfigTopic = "raw_config";
 
     static async Task Main()
     {
-        Console.WriteLine("Kafka UI");
+        Console.WriteLine("Kafka CLI Producer Started");
 
         var producerConfig = new ProducerConfig { BootstrapServers = KafkaBroker };
         using var producer = new ProducerBuilder<Null, string>(producerConfig).Build();
@@ -32,16 +32,30 @@ class Program
                 break;
             }
 
-            Console.WriteLine("Choose a transformation:");
-            Console.WriteLine("1. Uppercase");
-            Console.Write("Your choice: ");
-            string? choice = Console.ReadLine();
+            int pipelineId;
+            while (true)
+            {
+                Console.Write("Enter a pipeline ID (1 for Uppercase, 2 for Lowercase, 3 for Reverse): ");
+                string? pipelineInput = Console.ReadLine();
 
-            string transformation = "uppercase";
+                if (int.TryParse(pipelineInput, out pipelineId) && pipelineId > 0)
+                {
+                    break;
+                }
+                Console.WriteLine("Invalid input. Please enter a valid pipeline ID.");
+            }
 
+            var eventData = new
+            {
+                pipelineId = pipelineId,
+                data = message
+            };
 
-            await producer.ProduceAsync(RawDataTopic, new Message<Null, string> { Value = message });
-            await producer.ProduceAsync(RawConfigTopic, new Message<Null, string> { Value = transformation });
+            string jsonMessage = JsonSerializer.Serialize(eventData);
+
+            Console.WriteLine($"DEBUG: Sending JSON -> {jsonMessage}");
+
+            await producer.ProduceAsync(RawDataTopic, new Message<Null, string> { Value = jsonMessage });
 
             Console.WriteLine("Message sent.");
         }
