@@ -1,0 +1,7 @@
+docker exec -it {container_id} /bin/bash
+
+Create 'raw_data' topic
+kafka-topics --create --topic raw_data --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
+
+Create 'processed' topic
+kafka-topics --create --topic processed --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
